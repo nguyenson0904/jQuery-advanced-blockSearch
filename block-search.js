@@ -88,9 +88,33 @@
               if (exactRegex.test(textContent)) {
                 matchFound = true;
                 exactRegex.lastIndex = 0;
-                newHTML = originalHTML.replace(exactRegex, function(match) {
-                  return '<span class="' + settings.highlightClass + '">' + match + '</span>';
-                });
+                // Create a temporary div to manipulate DOM
+                var $tempDiv = $('<div>').html(originalHTML);
+                // Function to highlight text in a node
+                var highlightTextInNode = function(node) {
+                  if (node.nodeType === 3) { // Text node
+                    var text = node.nodeValue;
+                    if (exactRegex.test(text)) {
+                      exactRegex.lastIndex = 0;
+                      var span = document.createElement('span');
+                      span.className = settings.highlightClass;
+                      span.textContent = text.match(exactRegex)[0];
+                      var after = text.split(exactRegex);
+                      node.nodeValue = after[0];
+                      node.parentNode.insertBefore(span, node.nextSibling);
+                      if (after[1]) {
+                        var remainingText = document.createTextNode(after[1]);
+                        node.parentNode.insertBefore(remainingText, span.nextSibling);
+                      }
+                    }
+                  } else if (node.nodeType === 1) { // Element node
+                    var childNodes = Array.from(node.childNodes);
+                    childNodes.forEach(highlightTextInNode);
+                  }
+                };
+                // Process all nodes
+                Array.from($tempDiv[0].childNodes).forEach(highlightTextInNode);
+                newHTML = $tempDiv.html();
               }
               // If no exact match and tokenized search is enabled, then split into tokens
               else if (settings.tokenized) {
@@ -103,13 +127,39 @@
                 if (allTokensFound && tokens.length) {
                   matchFound = true;
                   // Highlight each token individually. Note: This may result in overlapping <span>s if tokens are substrings.
+                  // Create a temporary div for tokenized search
+                  var $tempDiv = $('<div>').html(originalHTML);
                   tokens.forEach(function(token) {
                     var tokenEscaped = token.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
                     var tokenRegex = new RegExp(tokenEscaped, flags);
-                    newHTML = newHTML.replace(tokenRegex, function(match) {
-                      return '<span class="' + settings.highlightClass + '">' + match + '</span>';
-                    });
+                    // Function to highlight token in a node
+                    var highlightTokenInNode = function(node) {
+                      if (node.nodeType === 3) { // Text node
+                        var text = node.nodeValue;
+                        if (tokenRegex.test(text)) {
+                          tokenRegex.lastIndex = 0;
+                          var parts = text.split(tokenRegex);
+                          var container = document.createDocumentFragment();
+                          for (var i = 0; i < parts.length; i++) {
+                            container.appendChild(document.createTextNode(parts[i]));
+                            if (i < parts.length - 1) {
+                              var span = document.createElement('span');
+                              span.className = settings.highlightClass;
+                              span.textContent = text.match(tokenRegex)[0];
+                              container.appendChild(span);
+                            }
+                          }
+                          node.parentNode.replaceChild(container, node);
+                        }
+                      } else if (node.nodeType === 1) { // Element node
+                        var childNodes = Array.from(node.childNodes);
+                        childNodes.forEach(highlightTokenInNode);
+                      }
+                    };
+                    // Process all nodes for each token
+                    Array.from($tempDiv[0].childNodes).forEach(highlightTokenInNode);
                   });
+                  newHTML = $tempDiv.html();
                 }
               }
             }
