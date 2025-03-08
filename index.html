@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Boilerplate</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 56px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            margin-top: auto;
+        }
+        .myHighlight{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col">
+                <input type="search" id="search" class="form-control" placeholder="Search settings...">
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Notification Settings</h5>
+                        <p class="card-text">Configure how you receive alerts and notifications from the system.</p>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="pushNotifications">
+                            <label class="form-check-label" for="pushNotifications">Push Notifications</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Display Preferences</h5>
+                        <p class="card-text">Customize your viewing experience and interface layout.</p>
+                        <select class="form-select">
+                            <option>Light Mode</option>
+                            <option>Dark Mode</option>
+                            <option>System Default</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Privacy Controls</h5>
+                        <p class="card-text">Manage your privacy settings and data sharing preferences.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="privacy" id="private">
+                            <label class="form-check-label" for="private">Private Profile</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="privacy" id="public">
+                            <label class="form-check-label" for="public">Public Profile</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Language Settings</h5>
+                        <p class="card-text">Choose your preferred language and region settings.</p>
+                        <select class="form-select">
+                            <option>English (US)</option>
+                            <option>Spanish</option>
+                            <option>French</option>
+                            <option>German</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Security Options</h5>
+                        <p class="card-text">Configure your account security and authentication methods.</p>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="twoFactor">
+                            <label class="form-check-label" for="twoFactor">Two-Factor Authentication</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Email Preferences</h5>
+                        <p class="card-text">Manage your email notification frequency and types.</p>
+                        <div class="mb-3">
+                            <select class="form-select">
+                                <option>Daily Digest</option>
+                                <option>Weekly Summary</option>
+                                <option>Important Only</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Accessibility</h5>
+                        <p class="card-text">Customize accessibility features for better usability.</p>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="highContrast">
+                            <label class="form-check-label" for="highContrast">High Contrast Mode</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Storage Management</h5>
+                        <p class="card-text">Monitor and manage your storage usage and preferences.</p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Backup Settings</h5>
+                        <p class="card-text">Configure automatic backup frequency and storage location.</p>
+                        <select class="form-select">
+                            <option>Daily Backup</option>
+                            <option>Weekly Backup</option>
+                            <option>Monthly Backup</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 card-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Sound Settings</h5>
+                        <p class="card-text">Adjust system sounds and notification volume levels.</p>
+                        <input type="range" class="form-range" id="volumeControl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="block-search.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
