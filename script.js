@@ -12,14 +12,14 @@ $('#search').searchHighlight({
     listSelector: '.card-item',
     searchFields: ['text', 'data-keywords', 'data-info'],
     caseSensitive: false,
-    delay: 300,
+    // delay: 300,
     highlightClass: 'myHighlight',
     tokenized: true, // Enable tokenized search: exact contiguous match first, then individual token matching
-    animation: {
-      show: 'fadeIn',
-      hide: 'fadeOut',
-      duration: 300
-    },
+    // animation: {
+    //   show: 'fadeIn',
+    //   hide: 'fadeOut',
+    //   duration: 300
+    // },
     onSearchStart: function(query) {
       console.log("Searching for: " + query);
     },

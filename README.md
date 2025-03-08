@@ -2,6 +2,12 @@
 
 [English](#english) | [Tiếng Việt](#tiếng-việt)
 
+<div align="center">
+  <img src="https://img.shields.io/badge/author-NguyenSon-blue.svg?style=for-the-badge" alt="Author: NguyenSon">
+  <img src="https://img.shields.io/badge/jquery-3.7.1-orange.svg?style=for-the-badge" alt="jQuery 3.7.1">
+  <img src="https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge" alt="License: MIT">
+</div>
+
 <a name="english"></a>
 ## English
 

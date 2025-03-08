@@ -5,15 +5,15 @@
         listSelector: '',             // Selector for list items (required)
         searchFields: ['text'],       // Fields to search. Use 'text' for visible text and e.g., 'data-keywords' for attributes.
         caseSensitive: false,         // Whether the search is case sensitive
-        delay: 300,                   // Debounce delay (ms)
+        delay: 0,                   // Debounce delay (ms)
         highlightClass: 'search-highlight', // CSS class applied to highlighted text
         tokenized: false,             // When true, if exact match fails, search using individual tokens (all must exist)
         // Optional animation settings:
-        animation: {
-          show: null,  // e.g., 'fadeIn'
-          hide: null,  // e.g., 'fadeOut'
-          duration: 300
-        },
+        // animation: {
+        //   show: null,  // e.g., 'fadeIn'
+        //   hide: null,  // e.g., 'fadeOut'
+        //   duration: 300
+        // },
         // Callback hooks:
         onSearchStart: null,
         onSearchComplete: null
